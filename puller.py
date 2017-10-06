@@ -29,7 +29,7 @@ else:
 	print "cloning"
 	repo = git.Repo.clone_from(remoteUrl, masterDir, branch='master')
 
-masterLink = '<a href="master/>{0}"</a>'.format(repoName)
+masterLink = '<a href="master/">master</a>'
 
 def onerror(func, path, exc_info):
     """
@@ -62,7 +62,7 @@ for tag in tags:
 	shutil.copytree(masterDir, tagSubDir)
 	tagRepo = git.Repo(tagSubDir)
 	tagRepo.git.checkout(str(tag))
-	tagLinks += '      <li><a href="tag/{0}/>{0}"</a></li>\n'.format(str(tag))
+	tagLinks += '      <li><a href="tag/{0}/">{0}</a></li>\n'.format(str(tag))
 
 html = """
 <!doctype html>
@@ -71,7 +71,6 @@ html = """
   </head>
   <body>
   	<h1>{0}</h1>
-    <h2>Master:</h2>
     {1}
 
     <h4>Tags:</h4>
@@ -79,7 +78,7 @@ html = """
 {2}    </ul>
   </body>
 </html>
-""".format(repoName, masterLink, tagLinks)
+""".format(repoName.upper(), masterLink, tagLinks)
 
 file = open(path.join(scriptDir, 'index.html'), 'w') 
 file.write(html) 

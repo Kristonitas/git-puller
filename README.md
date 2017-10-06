@@ -10,3 +10,4 @@ Have GitPython installed (`pip install GitPython`)
 
 * Will create files and folders near the puller.py
 * Leaves the .git folder in master and tag/[tag] folders, be warry when serving on a server if its a private repo
+* The index.html is ugly
